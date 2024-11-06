@@ -3,43 +3,183 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website Kalkulator BMI</title>
-    <link rel="stylesheet" href="css/style.css"> <!-- Link to CSS file -->
+    <title>Kalkulator BMI</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<main>
+        <!-- Section Form -->
+        <section>
 
-    <div class="container">
-        <h1>Kalkulator BMI</h1>
+            <div>
+                <header>
+                    <h1>KALKULATOR BMI</h1>
+                </header>
+        
+                <article>
+                    <p>BMI (Body Mass Index) atau Indeks Massa Tubuh adalah ukuran sederhana untuk menilai apakah berat badan seseorang sehat berdasarkan tinggi badannya. Kalkulator BMI membantu pengguna mengetahui kategori berat badannya, mulai dari kurang berat badan hingga obesitas.</p>
+                </article>
+    
+            </div>
+    
+            <form class="color-section">
+                <div>
+                    <!-- Gender Selection -->
+                    <label for="gender">Jenis Kelamin:</label> <br>
+                    <select id="gender" name="gender">
+                        <option value="Laki-Laki">Laki-Laki</option>
+                        <option value="Wanita">Wanita</option>
+                    </select> <br>
 
-        <!-- BMI Input Form -->
-        <form id="bmiForm">
-            <!-- Gender Selection -->
-            <label for="gender">Jenis Kelamin:</label>
-            <select id="gender" name="gender">
-                <option value="Laki-Laki">Laki-Laki</option>
-                <option value="Wanita">Wanita</option>
-            </select>
+                    <!-- Age Input -->
+                    <label for="age">Usia (tahun):</label>
+                    <input type="number" id="age" min="0" required>
 
-            <!-- Weight Input -->
-            <label for="weight">Berat Badan (kg):</label>
-            <input type="number" id="weight" required>
+                    <!-- Weight Input -->
+                    <label for="weight">Berat Badan (kg):</label>
+                    <input type="number" id="weight" min="0" required>
 
-            <!-- Height Input -->
-            <label for="height">Tinggi Badan (cm):</label>
-            <input type="number" id="height" required>
+                    <!-- Height Input -->
+                    <label for="height">Tinggi Badan (cm):</label>
+                    <input type="number" id="height" min="0" required>
 
-            <!-- Calculate Button -->
-            <button type="button" onclick="calculateBMI()">Hitung BMI</button>
-        </form>
+                </div>
 
-        <!-- Result Display -->
-        <div id="result" class="result">
-            <h2>Hasil BMI:</h2>
-            <p id="bmiValue"></p>
-            <p id="bmiInterpretation"></p>
-        </div>
-    </div>
+                    <!-- Buttons -->
+                    <button type="button" onclick="calculateBMI()">Hitung BMI</button>
+                    <button type="reset" onclick="resetResult()">Reset</button>
 
-    <script src="js/script.js"></script> <!-- Link to JavaScript file -->
+            </form>
+            
+            <div class="form-information">
+                <header>
+                    <h2>FORM INFORMATION</h2>
+                </header>
+        
+                <article>
+                    <p>Indeks Massa Tubuh (BMI) adalah alat sederhana yang digunakan untuk mengukur lemak tubuh berdasarkan berat badan dan tinggi seseorang. BMI digunakan untuk mengkategorikan seseorang ke dalam beberapa kelompok seperti kekurangan berat badan, berat badan normal, kelebihan berat badan, dan obesitas. Meskipun BMI bermanfaat sebagai indikator awal untuk mengevaluasi status berat badan, penting diingat bahwa BMI tidak mempertimbangkan komposisi tubuh, seperti proporsi otot dan lemak, atau faktor lain seperti usia, jenis kelamin, dan tingkat kebugaran. Oleh karena itu, BMI sebaiknya dilengkapi dengan evaluasi kesehatan lebih menyeluruh untuk mendapatkan gambaran kesehatan yang lebih akurat.</p>
+                    <p> Rumus BMI adalah membagi berat badan dalam kilogram dengan kuadrat tinggi badan dalam meter. <br> Rumus BMI: <strong>BMI = Berat Badan (kg) / Tinggi Badan (m)<sup>2</sup></strong></p>
+                    <p></p>
+                </article>
+
+                <h3>Kategori BMI</h3>
+                <ul>
+                    <li>Di bawah 18.5: Kurang berat badan</li>
+                    <li>18.5 – 24.9: Berat badan normal</li>
+                    <li>25 – 29.9: Kelebihan berat badan</li>
+                    <li>30 – 34.9: Obesitas kelas 1</li>
+                    <li>35 – 39.9: Obesitas kelas 2</li>
+                    <li>40 ke atas: Obesitas kelas 3 (morbid)</li>
+                </ul>
+
+                <!-- Tabel penjelasan kategori BMI -->
+                <h3>Tabel Penjelasan Kategori BMI</h3>
+                <table>
+                    <tr>
+                        <th>Kategori</th>
+                        <th>BMI</th>
+                    </tr>
+
+                    <tr>
+                        <td>Berat badan kurang</td>
+                        <td>&lt; 18.5</td>
+                    </tr>
+                    <tr>
+                        <td>Normal</td>
+                        <td>18.5 - 24.9</td>
+                    </tr>
+                    <tr>
+                        <td>Kelebihan berat badan</td>
+                        <td>25 – 29.9</td>
+                    </tr>
+                    <tr>
+                        <td>Obesitas kelas (1 & 2)</td>
+                        <td>30 - 39.9</td>
+                    </tr>
+                    <tr>
+                        <td>Obesitas Ekstrem (kelas 3)</td>
+                        <td>40</td>
+                    </tr>
+                </table>
+
+                <!-- BMI Board -->
+                 <h3>BMI (Body Mass Index) Charts</h3>
+                    <img src="assets/bmi-charts.gif" alt="sumber: Kompasiana.com" class="images">
+            </div>
+    
+    
+        </section>
+    
+        <!-- Section Result -->
+        <section class="color-section">
+    
+            <header>
+                <h1>HASIL</h1>
+            </header>
+    
+                <!-- Hasil Kalkulasi -->
+            <div id="result" class="result">
+                <p>Hasil BMI Anda akan terlihat disini</p>
+                <p id="bmiValue"></p>
+                <p id="bmiInterpretation"></p>
+                <div id="healthTips"></div>
+                <div id="downloadButtonContainer"></div>
+            </div>
+    
+            <!-- Info dari Hasil -->
+            <article>
+                <h2>Tips Kesehatan</h2>
+                <h3>Kekurangan Berat Badan (BMI &lt; 18,5)</h4>
+                <p>BMI di bawah 18,5 mengindikasikan bahwa seseorang berada dalam kategori kekurangan berat badan. Hal ini dapat disebabkan oleh berbagai faktor, termasuk malnutrisi, gangguan makan, atau masalah kesehatan lainnya. Risiko Kesehatan: Orang yang kekurangan berat badan memiliki risiko lebih tinggi mengalami anemia, kekurangan nutrisi penting, osteoporosis, sistem imun yang lemah, serta gangguan pertumbuhan pada anak-anak dan remaja.</p>
+                <h4>Tips :</h4>
+                <ul>
+                    <li>Makan Makanan Kaya Nutrisi: Pastikan pola makan mencakup karbohidrat sehat, protein, lemak sehat, serta sayuran dan buah-buahan.</li>
+                    <li>Frekuensi Makan Lebih Sering: Konsumsi makanan dalam porsi kecil tapi lebih sering dalam sehari, seperti 5-6 kali makan.</li>
+                    <li>Olahraga untuk Membangun Otot: Latihan kekuatan, seperti angkat beban, dapat membantu meningkatkan massa otot.</li>
+                    <li>Cukup Istirahat: Tidur yang cukup membantu proses regenerasi dan pertumbuhan otot.</li>
+                </ul>
+
+                <h3>Berat Badan Normal (BMI 18,5 – 24,9)</h3>
+                <p>BMI dalam rentang ini menunjukkan bahwa seseorang memiliki berat badan yang dianggap sehat untuk tinggi badannya. Ini berarti tubuh berada dalam keseimbangan yang baik antara lemak dan massa tubuh. Keuntungan Kesehatan: Memiliki berat badan normal dikaitkan dengan risiko lebih rendah untuk berbagai penyakit kronis seperti penyakit jantung, diabetes tipe 2, dan tekanan darah tinggi.</p>
+                <h4>Tips :</h4>
+                <ul>
+                    <li>Pertahankan Pola Makan Seimbang: Pastikan konsumsi makanan tetap seimbang dengan nutrisi yang mencakup semua kelompok makanan.</li>
+                    <li>Aktif Secara Fisik: Lakukan aktivitas fisik setidaknya 150 menit per minggu, seperti jogging, bersepeda, atau berenang.</li>
+                    <li>Hidrasi yang Cukup: Minum air setidaknya 8 gelas sehari untuk menjaga keseimbangan cairan tubuh.</li>
+                    <li>Pantau Berat Badan Secara Berkala: Memastikan berat badan tetap stabil dapat membantu menjaga kesehatan jangka panjang.</li>
+                </ul>
+
+                <h3>Kelebihan Berat Badan (BMI 25 – 29,9)</h3>
+                <p>BMI dalam kategori ini menunjukkan bahwa seseorang memiliki lebih banyak lemak tubuh daripada yang diinginkan. Ini sering menjadi tanda bahwa gaya hidup perlu diubah untuk menghindari peningkatan risiko kesehatan. Risiko Kesehatan: Orang dengan kelebihan berat badan memiliki risiko lebih tinggi untuk mengalami hipertensi, penyakit jantung, diabetes tipe 2, serta gangguan pernapasan.</p>
+                <h4>Tips :</h4>
+                <ul>
+                    <li>Kendalikan Porsi Makan: Mengurangi porsi makanan membantu menyeimbangkan asupan kalori.</li>
+                    <li>Tingkatkan Aktivitas Fisik: Kombinasi latihan kardio dan kekuatan dapat membantu membakar kalori lebih efektif.</li>
+                    <li>Hindari Makanan Olahan: Pilih makanan segar dan hindari makanan yang tinggi gula dan lemak trans.</li>
+                    <li>Tidur yang Cukup: Kurang tidur dapat mempengaruhi hormon yang mengatur rasa lapar.</li>
+                </ul>
+
+                <h3>Obesitas (BMI 30 ke atas)</h3>
+                <p>BMI di atas 30 menunjukkan bahwa seseorang masuk dalam kategori obesitas, yang menandakan jumlah lemak tubuh berlebih yang signifikan. Risiko Kesehatan: Obesitas meningkatkan risiko penyakit serius seperti penyakit jantung koroner, stroke, diabetes tipe 2, osteoarthritis, serta berbagai jenis kanker. </p>
+                <h4>Tips :</h4>
+                <ul>
+                    <li>Konsultasi dengan Profesional Kesehatan: Mendapatkan bantuan dari dokter atau ahli gizi untuk merancang program penurunan berat badan yang aman dan efektif.</li>
+                    <li>Pola Makan yang Sehat: Fokus pada diet yang tinggi serat seperti sayuran, buah-buahan, biji-bijian, dan protein rendah lemak.</li>
+                    <li>Tetapkan Target yang Realistis: Penurunan berat badan yang aman adalah sekitar 0,5 hingga 1 kg per minggu.</li>
+                    <li>Aktivitas Fisik Teratur: Mulailah dengan aktivitas ringan seperti berjalan kaki, lalu perlahan tingkatkan intensitasnya.</li>
+                </ul>
+
+                <p>BMI adalah alat yang bermanfaat untuk memberikan gambaran umum tentang status berat badan seseorang, namun tidak mempertimbangkan faktor-faktor seperti massa otot dan distribusi lemak. Oleh karena itu, hasil BMI harus diinterpretasikan bersama dengan evaluasi kesehatan yang lebih mendalam oleh tenaga medis. Tips di atas dapat membantu memulai pola hidup sehat dan menjaga kesehatan tubuh secara keseluruhan. Perubahan kecil dalam gaya hidup sehari-hari dapat berdampak besar dalam menjaga atau memperbaiki status kesehatan. Untuk penilaian kesehatan yang lebih akurat, disarankan untuk berkonsultasi dengan profesional medis atau ahli gizi.</p>
+            </article>
+        </section>
+</main>
+
+<footer>
+    <span>Made by Nina</span>
+</footer>
+
+<script src="js/script.js"></script>
+
 </body>
 </html>

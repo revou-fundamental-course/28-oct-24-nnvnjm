@@ -1,29 +1,111 @@
-/* Basic styling for the container */
-.container {
-    max-width: 600px;
-    margin: auto;
+main {
+    display: flex;
+    gap: 30px;
     padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
     text-align: center;
 }
 
-/* Styling for the form */
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+input[type=number] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    text-align: center;
 }
 
-/* Result section styling */
-.result {
+.color-section {
+    background-color: rgb(227, 230, 236);
+    padding: 8px;
+    border-radius: 8px;
+}
+
+article {
+    text-align: justify;
+}
+
+#gender {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    border-style: none;
+    border-radius: 5px;
+    font-family: "Times New Roman", Times, serif;
+    text-align: center;
+}
+
+button {
+    margin: 3px;
+    width: 100%;
+    padding: 7px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: "Times New Roman", Times, serif;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.form-information {
+    text-align: left;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 20px 0;
+}
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+#result {
     margin-top: 20px;
     padding: 15px;
     border: 1px solid #ccc;
     background-color: #f9f9f9;
 }
 
-/* Additional styling */
-button {
+footer {
+    background-color: #f1f1f1;
+    text-align: center;
     padding: 10px;
-    font-size: 16px;
-    cursor: pointer;
 }
+
+
+/* Media query untuk mobile */
+@media (max-width: 768px) {
+    .color-section {
+      flex: 1 1 100%; /* Lebar elemen penuh di mobile */
+    }
+  }
