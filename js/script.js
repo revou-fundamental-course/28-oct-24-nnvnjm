@@ -1,13 +1,33 @@
 // Function to calculate BMI
 function calculateBMI() {
-    // Ambil nilai berat dan tinggi dari form
+    // Ambil nilai Gender, berat, dan tinggi dari form
+    const age = parseFloat(document.getElementById("age").value);
     const weight = parseFloat(document.getElementById("weight").value);
     const heightInCm = parseFloat(document.getElementById("height").value);
 
     // Check for valid input
-    if (!weight || !heightInCm) {
-        alert("Masukkan berat badan dan tinggi badan yang valid.");
-        return;
+    if (!age) {
+        document.getElementById("age-alert").style.display = "block";  
+    } else {
+        document.getElementById("age-alert").style.display = "none";  
+    }
+        
+    if (!weight) {
+        document.getElementById("weight-alert").style.display = "block";  
+    } else {
+        document.getElementById("weight-alert").style.display = "none"; 
+    }
+        
+    if (!heightInCm) {
+        document.getElementById("height-alert").style.display = "block";  
+    } else {
+        document.getElementById("height-alert").style.display = "none";  
+    }
+        
+    if (age && weight && heightInCm) {
+        document.getElementById("result").style.display = "block";  
+    } else {
+        document.getElementById("result").style.display = "none"; 
     }
 
     // Convert height from cm to meters
@@ -19,7 +39,8 @@ function calculateBMI() {
     // Display BMI result
     document.getElementById("bmiValue").textContent = `BMI Anda: ${bmi.toFixed(1)}`;
 
-    // Interpretation of BMI
+
+    // Interpretation and Health Tips of BMI
     let interpretation;
     let healthTips = "";
 
@@ -44,6 +65,8 @@ function calculateBMI() {
       document.getElementById("bmiInterpretation").textContent = interpretation;
       document.getElementById("healthTips").textContent = healthTips;
 
+
+
     //   Download Botton
     const downloadButtonContainer = document.getElementById("downloadButtonContainer");
     downloadButtonContainer.innerHTML = ""; // Clear any existing button
@@ -66,16 +89,27 @@ function calculateBMI() {
     };
   
     downloadButtonContainer.appendChild(downloadButton);  
+
 }
 
+// Reset function
+function resetFormAndResult() {
+    // Mereset input form
+    document.getElementById("myForm").reset();
+    
+    // Menyembunyikan dan menghapus isi dari elemen hasil
+    document.getElementById("bmiValue").textContent = "";
+    document.getElementById("bmiInterpretation").textContent = "";
+    document.getElementById("healthTips").textContent = "";
 
+    // Menyembunyikan pesan peringatan
+    document.getElementById("age-alert").style.display = "none";
+    document.getElementById("weight-alert").style.display = "none";
+    document.getElementById("height-alert").style.display = "none";
 
-
-// Function to reset the result display
-function resetResult() {
-  document.getElementById("bmiValue").textContent = "";
-  document.getElementById("bmiInterpretation").textContent = "";
-  document.getElementById("healthTips").textContent = "";
-  document.getElementById("downloadButtonContainer").innerHTML = ""; // Clear the download button
+    // Menghapus tombol download
+    const downloadButtonContainer = document.getElementById("downloadButtonContainer");
+    downloadButtonContainer.innerHTML = "";
 }
+
 

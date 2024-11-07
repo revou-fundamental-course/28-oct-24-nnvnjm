@@ -6,6 +6,44 @@ main {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     text-align: center;
+    font-family: "Mukta", sans-serif;
+}
+
+/* Main Header */
+.navbar {
+    display: grid;
+    align-items: center;
+}
+
+.logo img {
+    justify-content: flex-end;
+    align-items: center;
+    width: 100px;
+    height: auto;
+}
+
+#h1 {
+    font-size: 35px;
+    font-family: "Exo 2", sans-serif;
+}
+
+
+/* Input Container */
+.color-section {
+    background-color: rgb(227, 230, 236);
+    padding: 8px;
+    border-radius: 8px;
+}
+
+#gender {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    border-style: none;
+    border-radius: 5px;
+    text-align: center;
 }
 
 input[type=number] {
@@ -19,27 +57,6 @@ input[type=number] {
     text-align: center;
 }
 
-.color-section {
-    background-color: rgb(227, 230, 236);
-    padding: 8px;
-    border-radius: 8px;
-}
-
-article {
-    text-align: justify;
-}
-
-#gender {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 10px;
-    border-style: none;
-    border-radius: 5px;
-    font-family: "Times New Roman", Times, serif;
-    text-align: center;
-}
 
 button {
     margin: 3px;
@@ -49,8 +66,7 @@ button {
     color: #ffffff;
     border: none;
     border-radius: 5px;
-    font-size: 16px;
-    font-family: "Times New Roman", Times, serif;
+    font-size: 14px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
@@ -59,8 +75,68 @@ button:hover {
     background-color: #0056b3;
 }
 
+
+/* Display none for desktop version */
+#ket-mobile {
+    display: none;
+}
+
+
+/* Styling untuk div hasil kalkulasi */
+.result {
+    text-align: center;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.result p {
+    color: #666;
+    font-size: 16px;
+    margin: 5px 0 15px;
+}
+
+
+/* Styling untuk teks hasil BMI */
+#bmiValue {
+    font-size: 36px;
+    font-weight: bold;
+    color: #2a9d8f;
+}
+
+#bmiInterpretation {
+    font-size: 18px;
+    color: #264653;
+    margin-top: 10px;
+}
+
+#healthTips {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+}
+
+
+/* Style for the alert */
+.alert {
+    display: none;
+    color: rgb(252, 5, 5);
+    text-align: center;
+    font-size: 12px;
+    margin-bottom: 7px;
+}
+
+
+/* Form Information styling */
 .form-information {
     text-align: left;
+}
+
+article {
+    text-align: justify;
 }
 
 table {
@@ -89,23 +165,25 @@ img {
     height: auto;
 }
 
-#result {
-    margin-top: 20px;
-    padding: 15px;
-    border: 1px solid #ccc;
-    background-color: #f9f9f9;
-}
 
+/* Footer */
 footer {
-    background-color: #f1f1f1;
     text-align: center;
-    padding: 10px;
+    font-size: 12px;
+    font-family: "Mukta", sans-serif;
 }
 
 
 /* Media query untuk mobile */
 @media (max-width: 768px) {
+    main {
+        display: block;
+    }
     .color-section {
-      flex: 1 1 100%; /* Lebar elemen penuh di mobile */
+      flex: 1 1 100%;
+    }
+    #ket-mobile {
+        display: block;
+        color: #555;
     }
   }
